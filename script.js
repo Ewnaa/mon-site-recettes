@@ -2,19 +2,19 @@ const recipes = [
   {
     title: "Salade César",
     category: "Entrée",
-    image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.hellofresh.fr%2Frecipes%2Fsalade-cesar-de-luxe-au-poulet-5ba8a97130006c3be559c7d2&psig=AOvVaw3_mrq_0EWc5PCw-5LKjT77&ust=1745079345587000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLjnzqf94YwDFQAAAAAdAAAAABAE",
+    image: "https://img.hellofresh.com/c_fit,f_auto,fl_lossy,h_1100,q_50,w_2600/hellofresh_s3/image/5ba8a97130006c3be559c7d2-6cea7001.jpg",
     description: "Une salade classique avec poulet, croûtons et parmesan."
   },
   {
     title: "Spaghetti Carbonara",
     category: "Plat",
-    image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.marthastewart.com%2F338686%2Fspaghetti-carbonara&psig=AOvVaw0n19mIMeePAI-ra6GUJTGa&ust=1745079229879000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLDY8e_84YwDFQAAAAAdAAAAABAE",
+    image: "https://static01.nyt.com/images/2021/02/14/dining/carbonara-horizontal/carbonara-horizontal-master768-v2.jpg?quality=75&auto=webp",
     description: "Des pâtes crémeuses avec lardons et œufs."
   },
   {
     title: "Tarte aux Fraises",
     category: "Dessert",
-    image: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.patisserie-et-gourmandise.com%2Frecette%2Ftarte-fraise%2F&psig=AOvVaw1hSdVXzP0giRZskvqeb6MQ&ust=1745079385766000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCOjlurr94YwDFQAAAAAdAAAAABAl",
+    image: "https://www.patisserie-et-gourmandise.com/wp-content/uploads/2018/04/recette-tarte-fraise-2.jpg",
     description: "Une tarte fraîche avec crème pâtissière et fraises."
   },
 ];
@@ -52,20 +52,3 @@ function filterRecipes(category) {
 function searchRecipes() {
   displayRecipes(currentFilter);
 }
-
-document.getElementById("add-recipe-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const title = document.getElementById("recipeTitle").value;
-  const image = document.getElementById("recipeImage").value;
-  const category = document.getElementById("recipeCategory").value;
-  const description = document.getElementById("recipeDescription").value;
-
-  const newRecipe = { title, image, category, description };
-  recipes.push(newRecipe);
-
-  this.reset();
-  displayRecipes(currentFilter);
-});
-
-displayRecipes("all");
