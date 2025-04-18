@@ -1,0 +1,42 @@
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Recettes de Cuisine</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Recettes de Cuisine 🍽️</h1>
+    <nav>
+      <button onclick="filterRecipes('all')">Toutes</button>
+      <button onclick="filterRecipes('Entrée')">Entrées</button>
+      <button onclick="filterRecipes('Plat')">Plats</button>
+      <button onclick="filterRecipes('Dessert')">Desserts</button>
+    </nav>
+    <input type="text" id="searchInput" placeholder="Rechercher une recette..." oninput="searchRecipes()" />
+  </header>
+
+  <main id="recipes-container"></main>
+
+  <section id="add-recipe-section">
+    <h2>Ajouter une nouvelle recette 📝</h2>
+    <form id="add-recipe-form">
+      <input type="text" id="recipeTitle" placeholder="Titre de la recette" required />
+      <input type="text" id="recipeImage" placeholder="Lien de l'image (URL)" required />
+      <select id="recipeCategory" required>
+        <option value="">-- Catégorie --</option>
+        <option value="Entrée">Entrée</option>
+        <option value="Plat">Plat</option>
+        <option value="Dessert">Dessert</option>
+      </select>
+      <textarea id="recipeDescription" placeholder="Description" rows="3" required></textarea>
+      <button type="submit">Ajouter la recette</button>
+    </form>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

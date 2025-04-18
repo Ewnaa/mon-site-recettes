@@ -1,0 +1,71 @@
+const recipes = [
+  {
+    title: "Salade César",
+    category: "Entrée",
+    image: "https://source.unsplash.com/400x300/?salad",
+    description: "Une salade classique avec poulet, croûtons et parmesan."
+  },
+  {
+    title: "Spaghetti Carbonara",
+    category: "Plat",
+    image: "https://source.unsplash.com/400x300/?pasta",
+    description: "Des pâtes crémeuses avec lardons et œufs."
+  },
+  {
+    title: "Tarte aux Fraises",
+    category: "Dessert",
+    image: "https://source.unsplash.com/400x300/?strawberry-cake",
+    description: "Une tarte fraîche avec crème pâtissière et fraises."
+  },
+];
+
+let currentFilter = "all";
+
+function displayRecipes(filter) {
+  const searchTerm = document.getElementById("searchInput").value.toLowerCase();
+  const container = document.getElementById("recipes-container");
+  container.innerHTML = "";
+
+  const filtered = recipes.filter(r => {
+    const inCategory = filter === "all" || r.category === filter;
+    const inSearch = r.title.toLowerCase().includes(searchTerm) || r.description.toLowerCase().includes(searchTerm);
+    return inCategory && inSearch;
+  });
+
+  filtered.forEach(recipe => {
+    const card = document.createElement("div");
+    card.className = "recipe-card";
+    card.innerHTML = `
+      <img src="${recipe.image}" alt="${recipe.title}" />
+      <h3>${recipe.title}</h3>
+      <p>${recipe.description}</p>
+    `;
+    container.appendChild(card);
+  });
+}
+
+function filterRecipes(category) {
+  currentFilter = category;
+  displayRecipes(category);
+}
+
+function searchRecipes() {
+  displayRecipes(currentFilter);
+}
+
+document.getElementById("add-recipe-form").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const title = document.getElementById("recipeTitle").value;
+  const image = document.getElementById("recipeImage").value;
+  const category = document.getElementById("recipeCategory").value;
+  const description = document.getElementById("recipeDescription").value;
+
+  const newRecipe = { title, image, category, description };
+  recipes.push(newRecipe);
+
+  this.reset();
+  displayRecipes(currentFilter);
+});
+
+displayRecipes("all");
